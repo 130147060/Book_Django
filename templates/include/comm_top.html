@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header" style="margin-left: 20%">
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
+            <a class="navbar-brand" href="/">书籍电商网站</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li style="margin-right: 80px">
+                    <form class="navbar-form navbar-left" action="{% url 'search_view' %}" method="post">
+                    {% csrf_token %}
+                        <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入文章信息" name="search_key">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </li>
+                {% if request.user.is_authenticated %}
+{#                    如果已经登录显示用户信息,购物车#}
+                    <li class="dropdown" style="margin-right: 80px">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;{{ request.user.username }}</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;&nbsp;留言板</span></a></li>
+                            <li><a href="{% url 'car_view' %}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" id="car_id">&nbsp;&nbsp;件&nbsp;数:{{ count }}件</span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">&nbsp;&nbsp;订&nbsp;单</span></a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'logout_view' %}"><span class="glyphicon glyphicon-off" aria-hidden="true">&nbsp;&nbsp;注&nbsp;销</span></a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li  style="margin-right: 80px" >
+                        <a href="{% url 'login_view' %}"  role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;&nbsp;登&nbsp;录</span></a>
+                    </li>
+                {% endif %}
+                <li style="margin-right: 80px"><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true">&nbsp;统计页面</span></a></li>
+                <li style="margin-right: 80px"><a href="#"><span class="glyphicon glyphicon-paperclip" aria-hidden="true">&nbsp;文章展示</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,47 @@
+{% extends 'base_html.html' %}
+{% load staticfiles %}
+{% block title %}
+    详情界面
+{% endblock %}
+
+{% block page_css %}
+    <style>
+    .container{
+	    display: inline;
+	    text-align: center;
+	}
+    </style>
+
+
+{% endblock %}
+
+{% block page_js %}
+    <script type="text/javascript">
+        $(function () {
+            $('#add').click(function () {
+                let add_url='/car/add/';
+                let data={
+                    book_id:{{ book.book_id }},
+                    number:$('#number').val(),
+                };
+                $.post(add_url,data,function (result) {
+                    if(result && result.status===200){
+                        $('#car_id').text(result.count);
+                        alert('添加购物车成功')
+                    }else if (result && result.status===414) {
+                        window.location.href="{% url 'login_view' %}"
+                    }else {
+                        alert('添加失败')
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}
+{% block page_head %}
+    {% include 'include/first_navigation.html' %}
+{% endblock %}
+
+{% block page_main %}
+    {% include 'include/detail_include.html' %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{# 小说分类 class="active"#}
+<ul class="nav nav-pills" style="position: relative;margin-top: -20px">
+    <li role="presentation" style="margin-left: 3%"><a href="/">首页</a></li>
+    {% for nav in navigations %}
+        <li role="presentation" style="margin-left: 2%"><a href="/?kind_id={{ nav.kind_id }}">{{ nav.kind_name }}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href="/static/css/bootstrap.css" >
+
+</head>
+<body>
+{#设置背景图片#}
+<div style="position:absolute;z-index:-1;width:100%;height:100%;">
+    <img src="/static/img/background.jpg" width="100%" height="100%" />
+</div>
+
+<div style="margin-left: 39%;margin-top: 150px" class="btn btn-primary btn-lg disabled wrap" role="button">Welcome For Login</div>
+<div style="margin-top: 40px">
+    <form action="{% url 'login_view' %}" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">UserName</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="UserName" name="username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Again</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="PasswordAgain" name="password_again">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-6">
+                <button type="submit" class="btn btn-default">登&nbsp;&nbsp;&nbsp;录</button>
+                <a href="{% url 'register_view' %}" type="submit" class="btn btn-default">注册一个?</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

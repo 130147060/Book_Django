@@ -1,0 +1,14 @@
+{% extends 'base_html.html' %}
+{% load staticfiles %}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block page_head %}
+    {% include 'include/first_navigation.html' %}
+    {% include 'include/first_banner.html'%}
+{% endblock %}
+
+{% block page_main %}
+    {% include 'include/first_main.html' %}
+{% endblock %}

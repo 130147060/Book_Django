@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-8 col-lg-offset-2">
+    {% if book_kind %}
+        <p class="bg-info" style="height: 40px;font-size: large;position:relative;"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="position:absolute;top: 10px;"><span style="margin-left: 25px">{{ book_kind.kind_name }}</span></span></p>
+    {% endif %}
+
+    {% for recombook in  recombooks %}
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a href="{% url 'detail_view' %}+?book_id={{ recombook.book_id }}"><img class="img-thumbnail" src="{{ recombook.img_url}}" style="height: 200px"></a>
+                <div class="caption">
+                    <h5 style="margin-left: 50px;width:100px; white-space:nowrap;text-overflow:ellipsis;overflow:hidden; " >书名:{{ recombook.book_name}}</h5>
+                    <p style="margin-left: 50px;width:100px; white-space:nowrap;text-overflow:ellipsis;overflow:hidden; ">作者:{{ recombook.author_name }}</p>
+                    <p style="margin-left: 43px"><a href="#" class="btn btn-primary" role="button">购买</a> <a href="{% url 'detail_view' %}+?book_id={{ recombook.book_id }}" class="btn btn-default" role="button">预览</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{% extends 'base_html.html' %}
+{% load staticfiles %}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block page_js %}
+    <script type="text/javascript" src="/static/car_list/js/jquery-1.11.min.js"></script>
+    <script type="text/javascript" src="/static/car_list/js/etao.js"></script>
+    <script type="text/javascript" src="/static/car_list/js/cart.js"></script>
+{#    <script type="text/javascript">#}
+{#        $(function () {#}
+{#            let a=$(".check-one").checkbox().value;#}
+{#            let data={#}
+{#                a:a#}
+{#            };#}
+{#            $('#add').click(function () {#}
+{#                let add_url="/car/order/";#}
+{#                $.post(add_url,data,function (result) {#}
+{#                    if(result && result.status===200){#}
+{#                        $('#car_id').text(result.count)#}
+{#                    }else if (result && result.status===414) {#}
+{#                        window.location.href="{% url 'login_view' %}"#}
+{#                    }else {#}
+{#                        alert('添加失败')#}
+{#                    }#}
+{#            })#}
+{#        })#}
+{#        })#}
+{#    </script>#}
+{% endblock %}
+{% block page_css %}
+    <link href="/static/car_list/css/cart.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/static/car_list/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block page_head %}
+
+{% endblock %}
+
+{% block page_main %}
+    {% include 'include/car_detail.html' %}
+{% endblock %}

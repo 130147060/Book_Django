@@ -1,0 +1,31 @@
+{#轮播图#}
+<div id="slidershow" class="carousel slide" data-ride="carousel" style="position: relative;margin-top: -20px;clear: both">
+    <!-- 设置图片轮播的顺序 -->
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+        <li data-target="#slidershow" data-slide-to="1"></li>
+        <li data-target="#slidershow" data-slide-to="2"></li>
+    </ol>
+    <!-- 设置轮播图片 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <a href="#"><img src="/static/img/banner/banner_4.jpg" style="height: 300px;width: 100%"></a>
+
+        </div>
+        <div class="item">
+            <a href="#"><img src="/static/img/banner/banner_5.jpg" style="height: 300px;width: 100%"></a>
+
+        </div>
+        <div class="item">
+            <a href="#"><img src="/static/img/banner/banner_8.jpg" style="height: 300px;width: 100%"></a>
+
+        </div>
+    </div>
+    <!-- 设置轮播图片控制器 -->
+    <a class="left carousel-control" href="#slidershow" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#slidershow" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>

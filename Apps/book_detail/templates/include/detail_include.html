@@ -1,0 +1,51 @@
+
+<div class="row">
+    <div class="col-md-8 col-lg-offset-2">
+        <p class="bg-info" style="height: 40px;font-size: large;position:relative;">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="position:absolute;top: 10px;"><a style="margin-left: 25px">{{ kind.kind_name }}</a>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"><a style="margin-left: 25px">{{ book.book_name }}</a></span>
+            </span>
+        </p>
+        <div class="container">
+            <h1>{{ book.book_name }}</h1>
+        </div >
+        <div class="col-md-3 col-lg-offset-1">
+             <img src="{{ book.img_url }}" style="height: 250px;margin-top: 50px">
+             <button type="button" id="add"  class="btn btn-primary">加购物车</button><input style="width: 40px" id="number" name="number" type="number" min="1" max="{{ shop.stock }}">本
+             <button type="button" class="btn btn-success" id="add">立即购买</button>
+        </div>
+        <div class="col-md-6 col-lg-offset-1" style="margin-top:  40px">
+            <div style="padding: 5px;font-size: 20px">作者:{{ book.author_name }}</div>
+            <div style="padding: 5px;font-size: 20px">价格:{{ book.price }}元</div>
+            <div style="padding: 5px;font-size: 20px">{{ book.book_intro }}</div>
+        </div>
+
+        <div class="col-md-10 col-lg-offset-1" style="margin-top: 50px">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#zero" data-toggle="tab">小说章节</a>
+                </li>
+                <li>
+                    <a href="#first" data-toggle="tab">讨论区</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+{#                小说章节#}
+                <div class="tab-pane active" id="zero">
+                           <div class="container">
+                                <h3>{{ book.book_name }}</h3>
+                           </div >
+                    <div style="margin-top: 10px">
+                    {% for book_detail in book_details %}
+                            <p class="bg-info" style="font-size: 20px;font-weight: lighter"><a href="{{ book_detail.book_detail }}" style="color: black;text-decoration: none">{{ book_detail.srction_book }}</a></p>
+                    {% endfor %}
+                    </div>
+                </div>
+{#                讨论区#}
+                <div class="tab-pane fade" id="first">
+                    <p>学海无涯</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

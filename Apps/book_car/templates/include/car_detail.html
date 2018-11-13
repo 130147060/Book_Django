@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row hidden-print">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li class="active">查看购物车</li>
+            </ol>
+        </div>
+    </div>
+<form action="{% url 'order_view' %}" method="post">
+{% csrf_token %}
+    <div class="cart-wrap">
+        <table id="cartTable" class="cart table table-condensed">
+            <thead>
+                <tr>
+                    <th class="t-checkbox"><label><input class="check-all check" type="checkbox" />全选</label></th>
+                    <th class="t-goods text-center"><label>书名</label></th>
+                    <th class="text-center">备注</th>
+                    <th class="t-selling-price text-center"><label>销售单价</label></th>
+                    <th class="t-qty text-center"><label>采购数量</label></th>
+                    <th class="t-subtotal text-center"><label>金额小计</label></th>
+                    <th class="t-action"><label>操作</label></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for list in lists %}
+                <tr>
+                    <td colspan="2" class="goods"><label> <input type="checkbox" name="book_ids" class="check-one check" checked="" value="{{ list.book_id_id }}">{{ list.name }}</label></td>
+                    <td></td>
+                    <td class="selling-price number small-bold-red text-right"
+                        style="padding-top: 1.1rem;" data-bind="{{ list.price }}"></td>
+                    <td>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon minus">-</span>
+                            <input type="text" name="number" class="number form-control  input-sm" value="{{ list.number }}" />
+                            <input type="hidden" name="book_id" value="{{ list.book_id_id }}">
+                            <span class="input-group-addon plus">+</span>
+                        </div>
+                    </td>
+                    <td class="subtotal number small-bold-red text-right" style="padding-top: 1.1rem;"></td>
+                    <td class="action" style="padding-top: 1.1rem;"><span class="delete btn btn-xs btn-warning">删除</span></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="cart-summary">
+
+{#                    <a href="#" id="btn_settlement" type="button" class="btn btn-primary" disabled>去结算</a>#}
+                    <input type="submit" id="btn_settlement" class="btn btn-primary" disabled>
+                    <div style="margin-left: 1rem; margin-top: 0.4rem;" class="pull-right total">
+                        <label>金额合计:<span id="priceTotal"  class="price-total large-bold-red">0.00
+                        </span></label>
+                    </div>
+                    <div style="margin-top: 4px;" class="pull-right">
+                        <label>您选择了<span id="itemCount" class="large-bold-red" style="margin: 0 4px;"></span>种书，共<span id="qtyCount" class="large-bold-red" style="margin: 0 4px;"></span>本
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
